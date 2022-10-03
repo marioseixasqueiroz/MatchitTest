@@ -9,19 +9,12 @@ const query = require('./query')
 const client = new Client()
 await client.connect()
 
-class Square extends React.Component {
-    render() {
-        return (
-            <button className="square" onClick={function () { console.log('click'); }}>        {this.props.value}
-            </button>
-        );
-    }
-}
 
 class Button extends React.Component {
     render() {
         return (
-            <button className="button">
+            <button className="button" onClick={function () { /* TODO */; }}>
+
                 {/* TODO */}
             </button>
         );
@@ -61,7 +54,12 @@ class Empresas extends React.Component {
                 </div>
                 <div className="CRUDButtons">
                     <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
+                    <ol>{
+                        <li> /*insert button */ </li>
+                        <li> /*select button */ </li>
+                        <li> /*delete button */ </li>
+
+                    }</ol>
                 </div>
             </div>
         );
