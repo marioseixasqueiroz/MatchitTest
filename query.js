@@ -1,10 +1,7 @@
 const db = require('./db')
 
-insertquery {
+exports.insertquery = function (values) {
     const text = 'INSERT INTO matchit.empresas VALUES($1, $2) RETURNING *'
-    const values = ['', '']
-
-    // callback
     client.query(text, values, (err, res) => {
         if (err) {
             console.log(err.stack)
@@ -12,42 +9,40 @@ insertquery {
             console.log(res.rows[0])
         }
     })
-}
+    return res.rows;
+};
 
-selectquery{
+exports.selectquery = function (value) {
     const text = 'SELECT FROM matchit.empresas where id = VALUE($1) RETURNING *'
-    const value = ['']
-    // callback
-    client.query(text, values, (err, res) => {
+    client.query(text, value, (err, res) => {
         if (err) {
             console.log(err.stack)
         } else {
             console.log(res.rows[0])
         }
     })
-}
+    return res.rows;
+};
 
-deletequery {
-    const text = 'DELECT FROM 'matchit.empresas' where id= value($1) RETURNING *'
-    const value = ['']
-    // callback
-    client.query(text, values, (err, res) => {
+exports.deletequery = function (value) {
+    const text = 'DELECT FROM matchit.empresas where id= value($1) RETURNING *'
+    client.query(text, value, (err, res) => {
         if (err) {
             console.log(err.stack)
         } else {
             console.log(res.rows[0])
         }
     })
-}
+    return res.rows;
+};
 
-listquery {
-    const text = 'SELECT * FROM 'matchit.empresas'
-    // callback
-    client.query(text, values, (err, res) => {
+exports.listquery = function () {
+    const text = 'SELECT * FROM matchit.empresas; '
+    client.query(text, (err, res) => {
         if (err) {
             console.log(err.stack)
         } else {
-            console.log(res.rows[0])
-        }
-    })
-}
+            console.log(res.rows)
+        })
+    return res.rows;
+};
