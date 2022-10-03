@@ -4,7 +4,7 @@ var port = process.env.PORT || 1337;
 
 const { Pool, Client } = require('pg')
 
-const query = require('./queries')
+const query = require('./query')
 
 const client = new Client()
 await client.connect()
@@ -39,13 +39,13 @@ class Screen extends React.Component {
             <div>
                 <div className="status">Empresas</div>
                 <div className="Empresa-row">
-                    console.log{`nome= $empresas[0][0], cnpj= $empresas[0][1]` }
+                    {`nome= $empresas[0][0], cnpj= $empresas[0][1]` }
                 </div>
                 <div className="Empresa-row">
-                    console.log{`nome= $empresas[1][0], cnpj= $empresas[1][1]` }
+                    {`nome= $empresas[1][0], cnpj= $empresas[1][1]` }
                 </div>
                 <div className="Empresa-row">
-                    console.log{`nome= $empresas[2][0], cnpj= $empresas[2][1]` }
+                    {`nome= $empresas[2][0], cnpj= $empresas[2][1]` }
                 </div>
             </div>
         );
