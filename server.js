@@ -12,52 +12,54 @@ await client.connect()
 class Square extends React.Component {
     render() {
         return (
-            <button className="square">
+            <button className="square" onClick={function () { console.log('click'); }}>        {this.props.value}
+            </button>
+        );
+    }
+}
+
+class Button extends React.Component {
+    render() {
+        return (
+            <button className="button">
                 {/* TODO */}
             </button>
         );
     }
 }
 
-class Board extends React.Component {
-    renderSquare(i) {
-        return <Square />;
+class Screen extends React.Component {
+    renderButton(i) {
+        return <Button />;
     }
 
     render() {
-        const status = 'Next player: X';
-
+        const empresas = query.listquery(0);
         return (
             <div>
-                <div className="status">{status}</div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
+                <div className="status">Empresas</div>
+                <div className="Empresa-row">
+                    console.log{`nome= $empresas[0][0], cnpj= $empresas[0][1]` }
                 </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
+                <div className="Empresa-row">
+                    console.log{`nome= $empresas[1][0], cnpj= $empresas[1][1]` }
                 </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
+                <div className="Empresa-row">
+                    console.log{`nome= $empresas[2][0], cnpj= $empresas[2][1]` }
                 </div>
             </div>
         );
     }
 }
 
-class Game extends React.Component {
+class Empresas extends React.Component {
     render() {
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board />
+            <div className="Empresa">
+                <div className="Lista">
+                    <Screen />
                 </div>
-                <div className="game-info">
+                <div className="CRUDButtons">
                     <div>{/* status */}</div>
                     <ol>{/* TODO */}</ol>
                 </div>
@@ -69,7 +71,7 @@ class Game extends React.Component {
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Game />);
+root.render(<Empresas />);
 
 http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });

@@ -36,13 +36,14 @@ exports.deletequery = function (value) {
     return res.rows;
 };
 
-exports.listquery = function () {
-    const text = 'SELECT * FROM matchit.empresas; '
-    client.query(text, (err, res) => {
+exports.listquery = function (value) {
+    const text = 'SELECT * FROM matchit.empresas'
+    client.query(text, value, (err, res) => {
         if (err) {
             console.log(err.stack)
         } else {
             console.log(res.rows)
-        })
+        }
+    })
     return res.rows;
 };
